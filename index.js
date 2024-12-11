@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const userRoutes = require('./routes/userroutes');
 const signupRoutes = require('./routes/signuproutes');
 const loginRoutes = require('./routes/loginroutes');
-const homeRoutes = require('./routes/homeRoutes');
+const homeRoutes = require('./routes/homeroutes');
 const refreshRoutes = require('./routes/refreshroutes');
 const blogRoutes = require('./routes/blogroutes');
 
