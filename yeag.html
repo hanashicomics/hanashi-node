@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<article>
+    <h1>${rows[0].title}</h1>
+    <p>${rows[0].content}</p>
+</article>
+<div id="cusdis_thread"
+     data-host="https://cusdis.com"
+     data-app-id="YOUR_APP_ID"
+     data-page-id="${blogId}"
+     data-page-title="${rows[0].title}"
+     data-page-url="${req.protocol}://${req.get('host')}${req.originalUrl}">
+</div>
+<script src="https://cusdis.com/js/cusdis.es.js"></script>
+</body>
+</html>
