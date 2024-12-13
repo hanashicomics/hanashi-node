@@ -6,6 +6,10 @@ const authenticateToken = require('../middleware/auth');
 router.get('/', async (req, res) =>{
    try{
        const[rows] = await pool.query('SELECT * FROM blog');
+
+       if(rows.length===0){
+           res.status(404).json({error:'No blogs were found :('});
+       }
        res.json(rows);
    }
    catch (e){
@@ -29,30 +33,14 @@ router.get('/:id', async (req, res) => {
         }
 
         const appId = process.env.CUSDIS_APP_ID
-        // Construct the blog HTML content
-        const blogHtml = `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<article>
-    <h1>${rows[0].title}</h1>
-    <p>${rows[0].content}</p>
-</article>
-<div id="cusdis_thread"
-     data-host="https://cusdis.com"
-     data-app-id="${appId}"
-     data-page-id="${blogId}"
-     data-page-title="${rows[0].title}"
-     data-page-url="${req.protocol}://${req.get('host')}${req.originalUrl}">
-</div>
-<script src="https://cusdis.com/js/cusdis.es.js"></script>
-</body>
-</html>
-    `;
-        res.send(blogHtml);
+        //res.send(blogHtml);
+
+        res.json({
+            title:rows[0].title,
+            author:rows[0].author,
+            content: rows[0].content,
+            appId: appId
+        });
     }
     catch(e){
         console.error(e);

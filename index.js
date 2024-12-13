@@ -14,20 +14,24 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:5173', // React app URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+}));
+
 app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
-const host = '0.0.0.0';
 
-app.listen(PORT,host, () => {
+app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
 })
 
 //view engine for rendering html content
 app.set('view engine','hbs');
 app.use(bodyParser.json()); // Ensures JSON parsing
-app.use('/api/users',userRoutes);
+app.use('/api/users/edit',userRoutes);
 app.use('/api/users/signup',signupRoutes);
 app.use('/api/users/login',loginRoutes);
 app.use('/api/blogs',blogRoutes);
