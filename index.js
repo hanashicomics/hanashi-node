@@ -15,7 +15,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-    origin: 'https://lliz.onrender.com', // React app URL
+    origin: 'https://lets-learn-isizulu.netlify.app', // React app URL
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
