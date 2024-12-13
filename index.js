@@ -15,7 +15,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-    origin: 'http://localhost:5173', // React app URL
+    origin: 'https://lliz.onrender.com', // React app URL
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
