@@ -37,11 +37,11 @@ router.get('/:id', async (req, res) => {
                 b.content, 
                 GROUP_CONCAT(t.tag_name) AS tags
             FROM 
-                BLOG b
+                blog b
             JOIN 
-                BLOG_TAGS bt ON b.id = bt.blog_id
+                blog_tags bt ON b.id = bt.blog_id
             JOIN 
-                TAGS t ON bt.tag_id = t.tag_id
+                tags t ON bt.tag_id = t.tag_id
             WHERE 
                 b.id = ?
             GROUP BY 
