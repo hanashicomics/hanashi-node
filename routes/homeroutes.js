@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const pool = require('../db');
 
-router.get('/', (req, res) => {
-    const name = 'Ethan'
-    res.render('index', { name: name });
-})
+router.get('/', async (req, res) => {
+
+});
 
 module.exports = router;
