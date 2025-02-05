@@ -15,14 +15,11 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors({
-    origin: `${process.env.CORS_ALLOWED_URL}`,
-    //origin: 'https://lets-learn-isizulu.netlify.app',
-    //http://localhost:5173
-    //https://lets-learn-isizulu.netlify.app
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true
-}));
+// app.use(cors({
+//     origin: `${process.env.CORS_ALLOWED_URL}`,
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     credentials: true
+// }));
 
 app.use(express.json());
 
@@ -32,9 +29,8 @@ app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
 })
 
-//view engine for rendering html content
 app.set('view engine','hbs');
-app.use(bodyParser.json()); // Ensures JSON parsing
+app.use(bodyParser.json());
 app.use('/api/users/edit',userRoutes);
 app.use('/api/users/signup',signupRoutes);
 app.use('/api/users/login',loginRoutes);
