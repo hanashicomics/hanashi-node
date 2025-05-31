@@ -5,10 +5,8 @@ const bodyParser = require('body-parser');
 const userRoutes = require('./routes/userroutes');
 const signupRoutes = require('./routes/signuproutes');
 const loginRoutes = require('./routes/loginroutes');
-const homeRoutes = require('./routes/homeroutes');
 const refreshRoutes = require('./routes/refreshroutes');
-const blogRoutes = require('./routes/blogroutes');
-const wordofdayroutes = require('./routes/wordofdayroutes');
+const notifyRoutes = require('./routes/notifyroutes');
 
 //load env vars
 dotenv.config();
@@ -34,7 +32,5 @@ app.use(bodyParser.json());
 app.use('/api/users/edit',userRoutes);
 app.use('/api/users/signup',signupRoutes);
 app.use('/api/users/login',loginRoutes);
-app.use('/api/blogs',blogRoutes);
-app.use('/api/wordofday',wordofdayroutes);
+app.use('/api/notify',notifyRoutes);
 app.use('/api/users/refresh',refreshRoutes);
-app.use('/',homeRoutes);
