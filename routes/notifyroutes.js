@@ -49,8 +49,8 @@ router.post('/', async (req, res) => {
 
             // Save transaction to Firestore
             await db.collection('transactions').add({
-                uid: pfData.uid,
-                email: pfData.email,
+                uid: pfData.custom_str1,
+                email: pfData.custom_str2,
                 payment_status: pfData.payment_status,
                 amount_gross: pfData.amount_gross,
                 fullData: pfData,
