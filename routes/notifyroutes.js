@@ -3,6 +3,7 @@ const router = express.Router();
 const axios = require('axios');
 const qs = require('qs');
 const admin = require('firebase-admin');
+const firestore = require("firebase/firestore");
 
 // Initialize Firebase Admin once globally
 if (!admin.apps.length) {
@@ -60,12 +61,17 @@ router.post('/', async (req, res) => {
             console.log("✅ Transaction saved");
 
             // Update the user's plan in Firestore
+            const now = new Date();
+            const expiresAt = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000); // Add 30 days in ms
+            const expiresAtTimestamp = firestore.Timestamp.fromDate(expiresAt);
+
             if (uid) {
                 const userRef = db.collection('users').doc(uid);
                 await userRef.set(
                     {
                         plan: 'pro',
                         upgradedAt: admin.firestore.Timestamp.now(),
+                        pro_expires_at: expiresAtTimestamp
                     },
                     { merge: true }
                 );
