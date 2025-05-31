@@ -27,7 +27,7 @@ router.post('/', async (req, res) =>{
         try {
             // Validate with PayFast
             const verifyResponse = await axios.post(
-                'https://www.payfast.co.za/eng/query/validate',
+                'https://sandbox.payfast.co.za/​eng/query/validate',
                 rawBody,
                 {
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
