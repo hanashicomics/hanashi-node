@@ -63,7 +63,7 @@ router.post('/', async (req, res) => {
             // Update the user's plan in Firestore
             const now = new Date();
             const expiresAt = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000); // Add 30 days in ms
-            const expiresAtTimestamp = firestore.Timestamp.fromDate(expiresAt);
+            const expiresAtTimestamp = admin.firestore.Timestamp.fromDate(expiresAt);
 
             if (uid) {
                 const userRef = db.collection('users').doc(uid);
